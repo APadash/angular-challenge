@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../core/service/api.service';
 
 @Component({
   selector: 'app-plan',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlanComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: ApiService) { }
 
   ngOnInit(): void {
     // You should get the plan array from the: base-url/map/<map_id>
