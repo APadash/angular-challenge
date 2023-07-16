@@ -1,1 +1,4 @@
-<!-- You should implement the UI just like the plan-desing file -->
+<div *ngFor="let row of seatsList; index as x" class="row">
+    <app-seat *ngFor="let seat of row; index as y"
+    (onSelectSeat)="reserveSeat({x:x, y:y})" [status]="seat"></app-seat>
+</div>
