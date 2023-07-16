@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./salons-list/salons-list.module').then((m) => m.SalonsListModule)
   },
   {
-    path: 'plan',
+    path: 'plan/:id',
     loadChildren: () => import('./plan/plan.module').then((m) => m.PlanModule)
   },
   { path: '', redirectTo: 'salons', pathMatch: 'full'},
