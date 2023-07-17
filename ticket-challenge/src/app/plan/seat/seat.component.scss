@@ -2,20 +2,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    background-color: black;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
     
     .icon {
         width: 100% !important;
         height: 100% !important;
         fill: white !important;
         &.green {
-            fill: green !important;
+            fill: #7dd98e !important;
             cursor: pointer;
         }
         &.purple {
-            fill: purple !important;
+            fill: #bc62c4 !important;
         }
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .seat{
+        width: 20px;
+        height: 20px;
+        padding: 3px;
+    }
+}
+@media only screen and (max-width: 950px) {
+    .seat{
+        width: 17px;
+        height: 17px;
+        padding: 2.5px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .seat{
+        width: 15px;
+        height: 15px;
+        padding: 2px;
     }
 }

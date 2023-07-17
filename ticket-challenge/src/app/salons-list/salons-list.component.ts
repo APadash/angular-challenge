@@ -17,15 +17,14 @@ export class SalonsListComponent implements OnInit {
   }
 
   getSalons() {
-    this.salonsList = ['m213', 'm654', 'm63', 'm6888'];
-    // this.service.GetSalonsList().subscribe({
-    //   next:(res) => {
-    //     this.salonsList = res;
-    //   },
-    //   error:(err) => {
-    //     console.error(err);
-    //   }
-    // });
+    this.service.GetSalonsList().subscribe({
+      next:(res) => {
+        this.salonsList = res;
+      },
+      error:(err) => {
+        console.error(err);
+      }
+    });
   }
 
 }

@@ -31,33 +31,30 @@ export class PlanComponent implements OnInit {
   }
 
   getSeatsList() {
-    this.seatsList = [[0,0,1,0],[0,1,0,0],[1,1,1,1],[1,1,1,1]];
-    // this.service.GetSeats(this.salonId).subscribe({
-    //   next: (res:number[][]) => {
-    //    this.seatsList = res;
-    //   },
-    //   error:(err) => {
-    //     console.error(err);
-    //   }
-    // });
+    this.service.GetSeats(this.salonId).subscribe({
+      next: (res:number[][]) => {
+       this.seatsList = res;
+      },
+      error:(err) => {
+        console.error(err);
+      }
+    });
   }
 
   reserveSeat(seat: ReserveModel) {
-    if (this.seatsList[seat.x][seat.y] == SeatStatusEnum.waiting || this.seatsList[seat.x][seat.y] == SeatStatusEnum.reserved) return; // prevent user from sending request frequently
+    // prevent user from sending request frequently
+    if (this.seatsList[seat.x][seat.y] == SeatStatusEnum.waiting || this.seatsList[seat.x][seat.y] == SeatStatusEnum.reserved) return;
 
     this.seatsList[seat.x][seat.y] = SeatStatusEnum.waiting;
 
-    setTimeout(() => {
-      this.seatsList[seat.x][seat.y] = SeatStatusEnum.reserved;
-    }, 1000);
-    // this.service.ReserveSeat(this.salonId, seat).subscribe({
-    //   next: () => {
-    //     this.seatsList[seat.x][seat.y] = SeatStatusEnum.reserved;
-    //   },
-    //   error:(err) => {
-    //     console.error(err);
-    //   }
-    // });
+    this.service.ReserveSeat(this.salonId, seat).subscribe({
+      next: () => {
+        this.seatsList[seat.x][seat.y] = SeatStatusEnum.reserved;
+      },
+      error:(err) => {
+        console.error(err);
+      }
+    });
   }
 
 }
